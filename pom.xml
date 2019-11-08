@@ -10,19 +10,23 @@
     <packaging>war</packaging>
 
     <properties>
-        <!-- maven-compiler-plugin -->
         <maven.compiler.release>8</maven.compiler.release>
         <maven.compiler.argument.release>${maven.compiler.release}</maven.compiler.argument.release>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <gwt.version>2.8.2</gwt.version>
+        <gwt-bean-validators.version>1.1.2</gwt-bean-validators.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-war-plugin.version>3.2.3</maven-war-plugin.version>
     </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.google.gwt</groupId>
                 <artifactId>gwt</artifactId>
-                <version>2.8.2</version>
+                <version>${gwt.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -33,12 +37,12 @@
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
+            <version>${validation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
+            <version>${validation-api.version}</version>
             <classifier>sources</classifier>
         </dependency>
 
@@ -64,7 +68,7 @@
         <dependency>
             <groupId>de.knightsoft-net</groupId>
             <artifactId>gwt-bean-validators</artifactId>
-            <version>1.1.2</version>
+            <version>${gwt-bean-validators.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>javax.validation</groupId>
@@ -77,8 +81,14 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
+                <version>${gwt.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -97,6 +107,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
