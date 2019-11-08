@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module rename-to="Sample">
+
+    <inherits name='com.google.gwt.user.User'/>
+
+    <inherits name="de.knightsoftnet.validators.GwtBeanValidators"/>
+
+    <entry-point class='org.camoiloc.sample.client.Sample'/>
+
+    <source path='client'/>
+    <source path='shared'/>
+
+    <servlet path='/SampleService' class='com.mySampleApplication.server.SampleServiceImpl'/>
+
+    <replace-with class="org.camoiloc.sample.client.ValidatorFactory">
+        <when-type-is class="javax.validation.ValidatorFactory"/>
+    </replace-with>
+
+</module>
